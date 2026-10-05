@@ -7,14 +7,14 @@ The project uses the following third-party libraries or assets
 ### AvaloniaUI
 
 - **Source**: https://github.com/AvaloniaUI/Avalonia
-- **Version**: 12.0.5
+- **Version**: 12.1.4
 - **License**: MIT License
 - **License Link**: https://github.com/AvaloniaUI/Avalonia/blob/master/licence.md
 
 ### Avalonia.Controls.DataGrid
 
 - **Source**: https://github.com/AvaloniaUI/Avalonia.Controls.DataGrid
-- **Version**: 12.0.1
+- **Version**: 12.1.2
 - **License**: MIT License
 - **License Link**: https://github.com/AvaloniaUI/Avalonia.Controls.DataGrid/blob/master/licence.md
 
@@ -29,14 +29,14 @@ The project uses the following third-party libraries or assets
 ### TextMateSharp
 
 - **Source**: https://github.com/danipen/TextMateSharp
-- **Version**: 2.0.2
+- **Version**: 2.0.4
 - **License**: MIT License
 - **License Link**: https://github.com/danipen/TextMateSharp/blob/master/LICENSE.md
 
 ### OpenAI .NET SDK
 
 - **Source**: https://github.com/openai/openai-dotnet
-- **Version**: 2.10.0
+- **Version**: 2.14.0
 - **License**: MIT License
 - **License Link**: https://github.com/openai/openai-dotnet/blob/main/LICENSE
 
@@ -64,7 +64,7 @@ The project uses the following third-party libraries or assets
 ### StbImageSharp
 
 - **Source**: https://github.com/StbSharp/StbImageSharp
-- **Version**: 2.30.15
+- **Version**: 2.30.16
 - **License**: Public Domain
 
 ## Fonts

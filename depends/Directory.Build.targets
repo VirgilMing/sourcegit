@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup>
+    <!-- Override AvaloniaEdit's SourceLink pin to avoid GHSA-23fw-v26w-5fgq. -->
+    <PackageVersion Update="Microsoft.SourceLink.GitHub" Version="10.0.403" />
+  </ItemGroup>
+</Project>
