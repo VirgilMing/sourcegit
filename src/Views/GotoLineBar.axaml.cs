@@ -27,7 +27,7 @@ namespace SourceGit.Views
         public void Open(int maxLine)
         {
             _maxLine = maxLine;
-            TxtLine.Watermark = App.Text("GotoLine.Range", 1, maxLine);
+            TxtLine.PlaceholderText = App.Text("GotoLine.Range", 1, maxLine);
             TxtLine.Text = string.Empty;
             IsVisible = true;
             Dispatcher.UIThread.Post(() => TxtLine.Focus(), DispatcherPriority.Input);
