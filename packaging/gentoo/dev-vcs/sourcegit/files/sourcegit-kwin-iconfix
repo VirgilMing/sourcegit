@@ -1,0 +1,61 @@
+#!/bin/sh
+
+set -f
+
+# This rule belongs to the user who launches SourceGit, not to Portage.
+rule=78cfa18f-3053-4c0f-9b45-bc51fd595acd
+
+[ "$(id -u)" -ne 0 ] || exit 0
+case ${1-} in
+    --remove) remove=true ;;
+    '') remove=false ;;
+    *) exit 2 ;;
+esac
+
+if [ "$remove" = false ]; then
+    [ -n "${WAYLAND_DISPLAY-}" ] || exit 0
+    owner=$(qdbus6 org.freedesktop.DBus /org/freedesktop/DBus \
+        org.freedesktop.DBus.NameHasOwner org.kde.KWin 2>/dev/null)
+    [ "$owner" = true ] || exit 0
+fi
+
+rules=$(kreadconfig6 --file kwinrulesrc --group General --key rules) || exit 1
+case ,$rules, in
+    *,$rule,*) present=true ;;
+    *) present=false ;;
+esac
+
+if [ "$remove" = true ]; then
+    [ "$present" = true ] || exit 0
+    kept=
+    saved_ifs=$IFS
+    IFS=,
+    for item in $rules; do
+        [ "$item" = "$rule" ] || kept=${kept:+$kept,}$item
+    done
+    IFS=$saved_ifs
+    rules=$kept
+    for key in Description wmclass wmclasscomplete wmclassmatch desktopfile desktopfilerule; do
+        kwriteconfig6 --file kwinrulesrc --group "$rule" --key "$key" --delete || exit 1
+    done
+else
+    [ "$present" = false ] || exit 0
+    for setting in 'Description=SourceGit native Wayland desktop icon' \
+        wmclass=sourcegit wmclasscomplete=false wmclassmatch=1 \
+        desktopfile=sourcegit desktopfilerule=2; do
+        kwriteconfig6 --file kwinrulesrc --group "$rule" \
+            --key "${setting%%=*}" "${setting#*=}" || exit 1
+    done
+    rules=${rules:+$rules,}$rule
+fi
+
+count=0
+if [ -n "$rules" ]; then
+    saved_ifs=$IFS
+    IFS=,
+    for item in $rules; do count=$((count + 1)); done
+    IFS=$saved_ifs
+fi
+kwriteconfig6 --file kwinrulesrc --group General --key rules "$rules" || exit 1
+kwriteconfig6 --file kwinrulesrc --group General --key count "$count" || exit 1
+qdbus6 org.kde.KWin /KWin reconfigure >/dev/null 2>&1 || :

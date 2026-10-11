@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>virgilming@gmail.com</email>
+    <name>vgm</name>
+  </maintainer>
+  <use>
+    <flag name="wayland">Enable native Wayland using the downstream Avalonia 12 migration</flag>
+    <flag name="kwin-iconfix">Manage a user-owned KWin desktop-file rule when launching SourceGit on Wayland</flag>
+  </use>
+  <upstream>
+    <changelog>https://github.com/sourcegit-scm/sourcegit/releases/</changelog>
+    <bugs-to>https://github.com/sourcegit-scm/sourcegit/issues/</bugs-to>
+    <remote-id type="github">sourcegit-scm/sourcegit</remote-id>
+  </upstream>
+</pkgmetadata>
