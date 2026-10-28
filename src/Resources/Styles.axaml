@@ -834,8 +834,8 @@
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="28" SharedSizeGroup="MenuItemIcon" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGT" />
-                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemChevron" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="14" />
               </Grid.ColumnDefinitions>
 
               <ContentControl Grid.Column="0"
