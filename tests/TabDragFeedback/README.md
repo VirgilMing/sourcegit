@@ -3,8 +3,12 @@
 Run from an initialized SourceGit checkout with .NET SDK 10 and Python 3:
 
 ```sh
-python3 tests/TabDragFeedback/run.py
+python3 tests/TabDragFeedback/run.py --avalonia-version 12.1.4
 ```
+
+This integration branch uses Avalonia 12.1.4. The runner and project retain
+11.3.22 as their default for the independent Avalonia 11 drag branch, so the
+explicit version above is required here.
 
 The runner builds the real SourceGit views and executes four headless rendering
 cases: a long fixed-width title, a short title, a welcome tab, and a variable-width
